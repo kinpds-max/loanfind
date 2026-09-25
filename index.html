@@ -11,8 +11,8 @@
 body{min-height:100vh}.wrap{width:min(100%,720px);margin:0 auto;padding:18px 12px 48px}.accent{height:10px;background:var(--navy);border-radius:10px 10px 0 0}.card{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
 .intro{padding:24px 22px 20px;text-align:center}.brand-logo{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 auto 12px}.brand-mark{width:44px;height:44px;flex:0 0 44px}.brand-wordmark{display:flex;flex-direction:column;align-items:flex-start;line-height:1.02}.brand-name{font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--blue)}.brand-title{font-size:29px;font-weight:900;letter-spacing:-1.2px;color:var(--navy);white-space:nowrap}.intro p{margin:0;color:#4b5563;font-size:14px;line-height:1.7}.intro .hello{font-size:15px;font-weight:800;color:var(--navy);margin:0 0 8px;text-align:center}.required-note{margin-top:18px;color:var(--red);font-size:12px}.q{padding:22px}.q-title{font-size:16px;font-weight:700;line-height:1.5;margin:0 0 14px}.req{color:var(--red)}
 input,select,textarea{width:100%;border:0;border-bottom:1px solid #aeb7c2;background:transparent;padding:11px 2px 9px;font-size:15px;outline:none;border-radius:0;color:#111827}select{padding-right:24px}textarea{min-height:90px;resize:vertical;border:1px solid #cfd6df;border-radius:8px;padding:12px}input:focus,select:focus{border-bottom:2px solid var(--navy)}textarea:focus{border:2px solid var(--navy)}.opts{display:grid;gap:12px}.opt{display:flex;align-items:center;gap:10px;font-size:15px}.opt input{width:18px;height:18px;accent-color:var(--navy)}
-.privacy-box{background:#f8fafc;border:1px solid #e4e9ef;border-radius:10px;padding:14px;font-size:12px;line-height:1.75;color:#4b5563;margin-top:10px}.privacy-box strong{color:#1f2937}.check{display:flex;align-items:flex-start;gap:10px;margin-top:14px}.check input{width:18px;height:18px;margin-top:2px;accent-color:var(--navy)}.check span{font-size:13px;line-height:1.6}.actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:4px}.submit{border:0;background:var(--navy);color:#fff;font-size:15px;font-weight:800;padding:12px 22px;border-radius:6px;cursor:pointer}.clear{border:0;background:transparent;color:var(--navy);font-weight:700;cursor:pointer}.status{display:none;margin-top:12px;padding:12px 14px;border-radius:8px;font-size:13px;line-height:1.5}.status.ok{display:block;background:#e6f4ea;color:var(--green)}.status.err{display:block;background:#fce8e6;color:#b3261e}.footer{text-align:center;color:#7c8795;font-size:11px;line-height:1.7;padding:16px 4px}.brand{font-weight:800;color:#566273}.tiny{font-size:11px;color:#7b8491;line-height:1.5;margin-top:8px}
-@media(max-width:520px){.wrap{padding:10px 8px 34px}.intro{padding:22px 18px 18px}.brand-logo{gap:9px}.brand-mark{width:38px;height:38px;flex-basis:38px}.brand-name{font-size:12px}.brand-title{font-size:24px}.q{padding:19px 17px}.actions{align-items:flex-start;flex-direction:column}.submit{width:100%}.clear{align-self:flex-end}}
+.address-row{display:flex;gap:8px;align-items:flex-end}.address-row input{flex:1}.address-btn{flex:0 0 auto;border:1px solid var(--navy);background:#fff;color:var(--navy);font-weight:800;padding:10px 14px;border-radius:6px;cursor:pointer;white-space:nowrap}.address-btn:hover{background:#f3f6fa}.address-note{margin-top:7px;font-size:12px;color:#6b7280}.detail-address{margin-top:10px}.privacy-box{background:#f8fafc;border:1px solid #e4e9ef;border-radius:10px;padding:14px;font-size:12px;line-height:1.75;color:#4b5563;margin-top:10px}.privacy-box strong{color:#1f2937}.check{display:flex;align-items:flex-start;gap:10px;margin-top:14px}.check input{width:18px;height:18px;margin-top:2px;accent-color:var(--navy)}.check span{font-size:13px;line-height:1.6}.actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:4px}.submit{border:0;background:var(--navy);color:#fff;font-size:15px;font-weight:800;padding:12px 22px;border-radius:6px;cursor:pointer}.clear{border:0;background:transparent;color:var(--navy);font-weight:700;cursor:pointer}.status{display:none;margin-top:12px;padding:12px 14px;border-radius:8px;font-size:13px;line-height:1.5}.status.ok{display:block;background:#e6f4ea;color:var(--green)}.status.err{display:block;background:#fce8e6;color:#b3261e}.footer{text-align:center;color:#7c8795;font-size:11px;line-height:1.7;padding:16px 4px}.brand{font-weight:800;color:#566273}.tiny{font-size:11px;color:#7b8491;line-height:1.5;margin-top:8px}
+@media(max-width:520px){.wrap{padding:10px 8px 34px}.intro{padding:22px 18px 18px}.brand-logo{gap:9px}.brand-mark{width:38px;height:38px;flex-basis:38px}.brand-name{font-size:12px}.brand-title{font-size:24px}.q{padding:19px 17px}.address-row{align-items:stretch}.address-btn{padding:10px 12px}.actions{align-items:flex-start;flex-direction:column}.submit{width:100%}.clear{align-self:flex-end}}
 </style>
 </head>
 <body>
@@ -74,8 +74,13 @@ input,select,textarea{width:100%;border:0;border-bottom:1px solid #aeb7c2;backgr
     </section>
 
     <section class="card q">
-      <div class="q-title">대출 받을 집(부동산) 주소<br><span style="font-weight:500;font-size:13px;color:#4b5563">매수자금이면 대출 받을 집(부동산) 주소를 적어주시면 됩니다! :)</span></div>
-      <input id="propertyAddress" name="propertyAddress" placeholder="내 답변">
+      <div class="q-title">대출 받을 집(부동산) 주소<br><span style="font-weight:500;font-size:13px;color:#4b5563">매수자금이면 대출 받을 집(부동산) 주소를 검색해 주세요.</span></div>
+      <div class="address-row">
+        <input id="propertyAddress" name="propertyAddress" placeholder="도로명 또는 지번 주소" readonly>
+        <button class="address-btn" type="button" id="addressSearchBtn">주소 검색</button>
+      </div>
+      <div class="address-note">도로명주소와 지번주소 모두 검색할 수 있습니다.</div>
+      <input class="detail-address" id="propertyDetailAddress" name="propertyDetailAddress" placeholder="상세주소 (동·호수 등)">
     </section>
 
     <section class="card q">
@@ -119,6 +124,7 @@ input,select,textarea{width:100%;border:0;border-bottom:1px solid #aeb7c2;backgr
 
   <footer class="footer"><span class="brand">파인드론 FINDLOAN</span><br>파인드론은 대출상담 신청 접수를 위한 브랜드입니다.<br>※ 실제 대출 가능 여부·한도·금리·조건은 금융회사의 심사 결과에 따라 달라질 수 있습니다.<br>개인정보 수집·이용 주체: 이찬우 · 파인드론</footer>
 </main>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 const SCRIPT_URL='https://script.google.com/macros/s/AKfycbwgNL6-MtRv4GDyo2uQhLGWRDYbyLS2aIX9ZBuGoB3hcX6iyeXW9nL_QM0g6m49m3hhUA/exec';
 const form=document.getElementById('loanForm');
@@ -126,6 +132,25 @@ const status=document.getElementById('status');
 const phone=document.getElementById('phone');
 const clearBtn=document.getElementById('clearBtn');
 const submitBtn=form.querySelector('button[type="submit"]');
+const addressSearchBtn=document.getElementById('addressSearchBtn');
+const propertyAddress=document.getElementById('propertyAddress');
+const propertyDetailAddress=document.getElementById('propertyDetailAddress');
+
+addressSearchBtn.addEventListener('click',()=>{
+  if(typeof daum==='undefined' || !daum.Postcode){
+    alert('주소 검색 서비스를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.');
+    return;
+  }
+  new daum.Postcode({
+    oncomplete:function(data){
+      const selectedAddress=data.roadAddress || data.jibunAddress || '';
+      propertyAddress.value=selectedAddress;
+      propertyAddress.dataset.roadAddress=data.roadAddress || '';
+      propertyAddress.dataset.jibunAddress=data.jibunAddress || '';
+      propertyDetailAddress.focus();
+    }
+  }).open();
+});
 
 phone.addEventListener('input',()=>{
   let v=phone.value.replace(/[^0-9]/g,'').slice(0,11);
@@ -159,7 +184,7 @@ form.addEventListener('submit', async (e)=>{
     loanTiming: fd.get('neededWhen') || '',
     loanType: fd.get('loanType') || '',
     homeCount: fd.get('houseCount') || '',
-    address: fd.get('propertyAddress') || '',
+    address: [fd.get('propertyAddress') || '', fd.get('propertyDetailAddress') || ''].filter(Boolean).join(' '),
     existingLoan: fd.get('securedDebt') || '',
     contractDate: fd.get('contractClosing') || '',
     incomeDebt: fd.get('incomeDebt') || '',
