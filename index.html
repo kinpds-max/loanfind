@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>파인드론 | 대출상담 신청</title>
+<meta name="description" content="파인드론 대출상담 신청">
+<style>
+:root{--navy:#173a67;--blue:#2c64a6;--line:#dfe5ec;--text:#202124;--muted:#6b7280;--bg:#eef3f8;--white:#fff;--red:#d93025;--green:#188038}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans KR","Apple SD Gothic Neo","Segoe UI",sans-serif;color:var(--text)}
+body{min-height:100vh}.wrap{width:min(100%,720px);margin:0 auto;padding:18px 12px 48px}.accent{height:10px;background:var(--navy);border-radius:10px 10px 0 0}.card{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.intro{padding:24px 22px 20px;text-align:center}.brand-logo{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 auto 12px}.brand-mark{width:44px;height:44px;flex:0 0 44px}.brand-wordmark{display:flex;flex-direction:column;align-items:flex-start;line-height:1.02}.brand-name{font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--blue)}.brand-title{font-size:29px;font-weight:900;letter-spacing:-1.2px;color:var(--navy);white-space:nowrap}.intro p{margin:0;color:#4b5563;font-size:14px;line-height:1.7}.intro .hello{font-size:15px;font-weight:800;color:var(--navy);margin:0 0 8px;text-align:center}.required-note{margin-top:18px;color:var(--red);font-size:12px}.q{padding:22px}.q-title{font-size:16px;font-weight:700;line-height:1.5;margin:0 0 14px}.req{color:var(--red)}
+input,select,textarea{width:100%;border:0;border-bottom:1px solid #aeb7c2;background:transparent;padding:11px 2px 9px;font-size:15px;outline:none;border-radius:0;color:#111827}select{padding-right:24px}textarea{min-height:90px;resize:vertical;border:1px solid #cfd6df;border-radius:8px;padding:12px}input:focus,select:focus{border-bottom:2px solid var(--navy)}textarea:focus{border:2px solid var(--navy)}.opts{display:grid;gap:12px}.opt{display:flex;align-items:center;gap:10px;font-size:15px}.opt input{width:18px;height:18px;accent-color:var(--navy)}
+.privacy-box{background:#f8fafc;border:1px solid #e4e9ef;border-radius:10px;padding:14px;font-size:12px;line-height:1.75;color:#4b5563;margin-top:10px}.privacy-box strong{color:#1f2937}.check{display:flex;align-items:flex-start;gap:10px;margin-top:14px}.check input{width:18px;height:18px;margin-top:2px;accent-color:var(--navy)}.check span{font-size:13px;line-height:1.6}.actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:4px}.submit{border:0;background:var(--navy);color:#fff;font-size:15px;font-weight:800;padding:12px 22px;border-radius:6px;cursor:pointer}.clear{border:0;background:transparent;color:var(--navy);font-weight:700;cursor:pointer}.status{display:none;margin-top:12px;padding:12px 14px;border-radius:8px;font-size:13px;line-height:1.5}.status.ok{display:block;background:#e6f4ea;color:var(--green)}.status.err{display:block;background:#fce8e6;color:#b3261e}.footer{text-align:center;color:#7c8795;font-size:11px;line-height:1.7;padding:16px 4px}.brand{font-weight:800;color:#566273}.tiny{font-size:11px;color:#7b8491;line-height:1.5;margin-top:8px}
+@media(max-width:520px){.wrap{padding:10px 8px 34px}.intro{padding:22px 18px 18px}.brand-logo{gap:9px}.brand-mark{width:38px;height:38px;flex-basis:38px}.brand-name{font-size:12px}.brand-title{font-size:24px}.q{padding:19px 17px}.actions{align-items:flex-start;flex-direction:column}.submit{width:100%}.clear{align-self:flex-end}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="card">
+    <div class="accent"></div>
+    <div class="intro">
+      <div class="brand-logo" aria-label="파인드론 대출상담 신청 로고">
+        <svg class="brand-mark" viewBox="0 0 64 64" role="img" aria-hidden="true">
+          <rect x="4" y="4" width="56" height="56" rx="16" fill="#173a67"/>
+          <path d="M18 38c7-11 13-16 20-16 4 0 7 1 10 4" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+          <path d="M18 44c8-8 15-12 23-12 3 0 6 .5 9 2" fill="none" stroke="#71a7e3" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="45" cy="20" r="4" fill="#ffffff"/>
+        </svg>
+        <div class="brand-wordmark">
+          <span class="brand-name">FINDLOAN</span>
+          <span class="brand-title">파인드론 대출상담 신청</span>
+        </div>
+      </div>
+      <div class="hello">확인 후 순차적으로 상담을 도와드립니다.</div>
+      <p>간단한 정보를 남겨주세요.<br>주민등록번호, 계좌번호, 카드번호, 비밀번호 등 민감정보는 입력하지 마세요.</p>
+      <div class="required-note">* 표시는 필수 질문입니다.</div>
+    </div>
+  </section>
+
+  <form id="loanForm" novalidate>
+    <section class="card q">
+      <div class="q-title">성함 <span class="req">*</span></div>
+      <input id="name" name="name" autocomplete="name" required placeholder="내 답변">
+    </section>
+
+    <section class="card q">
+      <div class="q-title">연락처 <span class="req">*</span></div>
+      <input id="phone" name="phone" autocomplete="tel" inputmode="tel" required placeholder="내 답변">
+    </section>
+
+    <section class="card q">
+      <div class="q-title">대출이 필요한 시점 <span class="req">*</span></div>
+      <input id="neededWhen" name="neededWhen" required placeholder="내 답변">
+    </section>
+
+    <section class="card q">
+      <div class="q-title">상담 받으실 대출은 어떤 것인가요? <span class="req">*</span></div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="loanType" value="주택매수자금" required>주택매수자금</label>
+        <label class="opt"><input type="radio" name="loanType" value="전세자금대출">전세자금대출</label>
+        <label class="opt"><input type="radio" name="loanType" value="생활안정자금(대환 및 추가 주택담보대출)">생활안정자금(대환 및 추가 주택담보대출)</label>
+        <label class="opt"><input type="radio" name="loanType" value="개인사업자 담보대출">개인사업자 담보대출</label>
+        <label class="opt"><input type="radio" name="loanType" value="법인사업자 담보대출">법인사업자 담보대출</label>
+        <label class="opt"><input type="radio" name="loanType" value="정책자금/정부지원금 (사업자금, 창업자금)">정책자금/정부지원금 (사업자금, 창업자금)</label>
+        <label class="opt"><input type="radio" name="loanType" value="신용대출 (고금리 및 추가한도)">신용대출 (고금리 및 추가한도)</label>
+        <label class="opt"><input type="radio" name="loanType" value="그 외">그 외</label>
+      </div>
+    </section>
+
+    <section class="card q">
+      <div class="q-title">주택 보유 수<br><span style="font-weight:500;font-size:13px;color:#4b5563">(보유한 주택이 없으면 '0'으로 표기해주세요)</span></div>
+      <input id="houseCount" name="houseCount" inputmode="numeric" placeholder="내 답변">
+    </section>
+
+    <section class="card q">
+      <div class="q-title">대출 받을 집(부동산) 주소<br><span style="font-weight:500;font-size:13px;color:#4b5563">매수자금이면 대출 받을 집(부동산) 주소를 적어주시면 됩니다! :)</span></div>
+      <input id="propertyAddress" name="propertyAddress" placeholder="내 답변">
+    </section>
+
+    <section class="card q">
+      <div class="q-title">담보 부동산에 대출이 있거나, 보증금이 있으면 기재해 주세요<br><span style="font-weight:500;font-size:13px;color:#4b5563">(잘 모르겠으면 생략해 주세요)</span></div>
+      <input id="securedDebt" name="securedDebt" placeholder="내 답변">
+    </section>
+
+    <section class="card q">
+      <div class="q-title">부동산 매수자금 문의일 경우 계약일과 잔금일</div>
+      <input id="contractClosing" name="contractClosing" placeholder="내 답변">
+    </section>
+
+    <section class="card q">
+      <div class="q-title">소득 및 부채 현황<br><span style="font-weight:500;font-size:13px;color:#4b5563">소득 → 연소득<br>부채 → 현재 보유한 대출들</span></div>
+      <input id="incomeDebt" name="incomeDebt" placeholder="내 답변">
+    </section>
+
+    <section class="card q">
+      <div class="q-title">필요한 대출 금액 <span class="req">*</span></div>
+      <input id="amount" name="amount" required placeholder="내 답변">
+    </section>
+
+    <section class="card q">
+      <div class="q-title">개인정보 수집·이용 동의 <span class="req">*</span></div>
+      <div class="privacy-box">
+        <strong>개인정보 수집 주체</strong> : 이찬우 · 파인드론<br>
+        <strong>수집 목적</strong> : 대출 상담 신청 접수, 상담 연락 및 상담 진행<br>
+        <strong>수집 항목</strong> : 성명, 연락처, 대출 필요 시점, 상담 대출 유형, 주택 보유 수, 부동산 주소, 담보대출·보증금 현황, 계약일·잔금일, 소득·부채 현황, 필요한 대출 금액<br>
+        <strong>보유·이용 기간</strong> : 상담 목적 달성 후 지체 없이 파기하며, 관련 법령에 따라 보관이 필요한 경우 해당 법령에서 정한 기간 동안 보관합니다.<br>
+        <strong>동의 거부 안내</strong> : 개인정보 수집·이용에 동의하지 않을 수 있으나, 동의하지 않을 경우 상담 신청 접수가 어려울 수 있습니다.
+      </div>
+      <label class="check"><input id="agree" type="checkbox" required><span>위 개인정보 수집·이용 내용을 확인했으며 동의합니다.</span></label>
+    </section>
+
+    <div class="actions">
+      <button class="submit" type="submit">대출상담 신청하기</button>
+      <button class="clear" type="button" id="clearBtn">양식 지우기</button>
+    </div>
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+  </form>
+
+  <footer class="footer"><span class="brand">파인드론 FINDLOAN</span><br>파인드론은 대출상담 신청 접수를 위한 브랜드입니다.<br>※ 실제 대출 가능 여부·한도·금리·조건은 금융회사의 심사 결과에 따라 달라질 수 있습니다.<br>개인정보 수집·이용 주체: 이찬우 · 파인드론</footer>
+</main>
+<script>
+const SCRIPT_URL='https://script.google.com/macros/s/AKfycbwgNL6-MtRv4GDyo2uQhLGWRDYbyLS2aIX9ZBuGoB3hcX6iyeXW9nL_QM0g6m49m3hhUA/exec';
+const form=document.getElementById('loanForm');
+const status=document.getElementById('status');
+const phone=document.getElementById('phone');
+const clearBtn=document.getElementById('clearBtn');
+const submitBtn=form.querySelector('button[type="submit"]');
+
+phone.addEventListener('input',()=>{
+  let v=phone.value.replace(/[^0-9]/g,'').slice(0,11);
+  if(v.length<4) phone.value=v;
+  else if(v.length<8) phone.value=v.slice(0,3)+'-'+v.slice(3);
+  else phone.value=v.slice(0,3)+'-'+v.slice(3,7)+'-'+v.slice(7);
+});
+
+clearBtn.addEventListener('click',()=>{
+  form.reset();
+  status.className='status';
+  status.textContent='';
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+form.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  status.className='status';
+  status.textContent='';
+
+  if(!form.reportValidity()){
+    status.className='status err';
+    status.textContent='필수 항목을 확인해 주세요.';
+    return;
+  }
+
+  const fd=new FormData(form);
+  const data={
+    name: fd.get('name') || '',
+    phone: fd.get('phone') || '',
+    loanTiming: fd.get('neededWhen') || '',
+    loanType: fd.get('loanType') || '',
+    homeCount: fd.get('houseCount') || '',
+    address: fd.get('propertyAddress') || '',
+    existingLoan: fd.get('securedDebt') || '',
+    contractDate: fd.get('contractClosing') || '',
+    incomeDebt: fd.get('incomeDebt') || '',
+    amount: fd.get('amount') || '',
+    privacyAgree: document.getElementById('agree').checked ? '동의' : '미동의'
+  };
+
+  submitBtn.disabled=true;
+  submitBtn.textContent='접수 중...';
+
+  try{
+    const res=await fetch(SCRIPT_URL,{
+      method:'POST',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify(data)
+    });
+
+    if(!res.ok) throw new Error('HTTP '+res.status);
+
+    let result={success:true};
+    try{ result=await res.json(); }catch(_){ }
+    if(result.success===false) throw new Error(result.message || '접수 실패');
+
+    status.className='status ok';
+    status.textContent='상담 신청이 정상적으로 접수되었습니다. 확인 후 순차적으로 상담을 도와드립니다.';
+    form.reset();
+    status.scrollIntoView({behavior:'smooth',block:'center'});
+  }catch(err){
+    console.error(err);
+    status.className='status err';
+    status.textContent='접수 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.';
+  }finally{
+    submitBtn.disabled=false;
+    submitBtn.textContent='대출상담 신청하기';
+  }
+});
+</script>
+</body>
+</html>
