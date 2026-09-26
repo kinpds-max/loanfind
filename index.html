@@ -59,11 +59,6 @@ input,select,textarea{width:100%;border:0;border-bottom:1px solid #aeb7c2;backgr
     </section>
 
     <section class="card q">
-      <div class="q-title">대출이 필요한 시점 <span class="req">*</span></div>
-      <input id="neededWhen" name="neededWhen" required placeholder="내 답변">
-    </section>
-
-    <section class="card q">
       <div class="q-title">상담 받으실 대출은 어떤 것인가요? <span class="req">*</span></div>
       <div class="opts">
         <label class="opt"><input type="radio" name="loanType" value="주택매수자금" required>주택매수자금</label>
@@ -78,11 +73,11 @@ input,select,textarea{width:100%;border:0;border-bottom:1px solid #aeb7c2;backgr
     </section>
 
     <section class="card q">
-      <div class="q-title">주택 보유 수<br><span style="font-weight:500;font-size:13px;color:#4b5563">(보유한 주택이 없으면 '0'으로 표기해주세요)</span></div>
-      <input id="houseCount" name="houseCount" inputmode="numeric" placeholder="내 답변">
+      <div class="q-title">대출이 필요한 시점 <span class="req">*</span></div>
+      <input id="neededWhen" name="neededWhen" required placeholder="내 답변">
     </section>
 
-    <section class="card q">
+<section class="card q">
       <div class="q-title">대출 받을 집(부동산) 주소<br><span style="font-weight:500;font-size:13px;color:#4b5563">매수자금이면 대출 받을 집(부동산) 주소를 검색해 주세요.</span></div>
       <div class="address-row">
         <input id="propertyAddress" name="propertyAddress" placeholder="도로명 또는 지번 주소" readonly>
@@ -92,19 +87,14 @@ input,select,textarea{width:100%;border:0;border-bottom:1px solid #aeb7c2;backgr
       <input class="detail-address" id="propertyDetailAddress" name="propertyDetailAddress" placeholder="상세주소 (동·호수 등)">
     </section>
 
-    <section class="card q">
-      <div class="q-title">담보 부동산에 대출이 있거나, 보증금이 있으면 기재해 주세요<br><span style="font-weight:500;font-size:13px;color:#4b5563">(잘 모르겠으면 생략해 주세요)</span></div>
-      <input id="securedDebt" name="securedDebt" placeholder="내 답변">
-    </section>
-
-    <section class="card q">
+<section class="card q">
       <div class="q-title">부동산 매수자금 문의일 경우 계약일과 잔금일</div>
       <input id="contractClosing" name="contractClosing" placeholder="내 답변">
     </section>
 
     <section class="card q">
-      <div class="q-title">소득 및 부채 현황<br><span style="font-weight:500;font-size:13px;color:#4b5563">소득 → 연소득<br>부채 → 현재 보유한 대출들</span></div>
-      <input id="incomeDebt" name="incomeDebt" placeholder="내 답변">
+      <div class="q-title">소득<br><span style="font-weight:500;font-size:13px;color:#4b5563">(무직자일 경우 0으로 기재해 주세요)</span></div>
+      <input id="incomeDebt" name="incomeDebt" placeholder="연소득">
     </section>
 
     <section class="card q">
@@ -117,7 +107,7 @@ input,select,textarea{width:100%;border:0;border-bottom:1px solid #aeb7c2;backgr
       <div class="privacy-box">
         <strong>개인정보 수집업체</strong> : 론파인드, 이찬우<br>
         <strong>수집 목적</strong> : 대출 상담 신청 접수, 상담 연락 및 상담 진행<br>
-        <strong>수집 항목</strong> : 성명, 연락처, 대출 필요 시점, 상담 대출 유형, 주택 보유 수, 부동산 주소, 담보대출·보증금 현황, 계약일·잔금일, 소득·부채 현황, 필요한 대출 금액<br>
+        <strong>수집 항목</strong> : 성명, 연락처, 상담 대출 유형, 대출 필요 시점, 부동산 주소, 소득, 필요한 대출 금액<br>
         <strong>보유·이용 기간</strong> : 상담 목적 달성 후 지체 없이 파기하며, 관련 법령에 따라 보관이 필요한 경우 해당 법령에서 정한 기간 동안 보관합니다.<br>
         <strong>동의 거부 안내</strong> : 개인정보 수집·이용에 동의하지 않을 수 있으나, 동의하지 않을 경우 상담 신청 접수가 어려울 수 있습니다.
       </div>
@@ -136,7 +126,6 @@ input,select,textarea{width:100%;border:0;border-bottom:1px solid #aeb7c2;backgr
 <a href="https://docs.google.com/spreadsheets/d/1t-eerlrTs2GrcBjDu4UkHpzWTLIVyxL3VN4Srts135Y/edit" target="_blank" rel="noopener" style="color:#173a67;font-weight:700;text-decoration:underline">관리자페이지</a>
 </div></footer>
 </main>
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 const SCRIPT_URL='https://script.google.com/macros/s/AKfycbwgNL6-MtRv4GDyo2uQhLGWRDYbyLS2aIX9ZBuGoB3hcX6iyeXW9nL_QM0g6m49m3hhUA/exec';
 const form=document.getElementById('loanForm');
@@ -144,26 +133,6 @@ const status=document.getElementById('status');
 const phone=document.getElementById('phone');
 const clearBtn=document.getElementById('clearBtn');
 const submitBtn=form.querySelector('button[type="submit"]');
-const addressSearchBtn=document.getElementById('addressSearchBtn');
-const propertyAddress=document.getElementById('propertyAddress');
-const propertyDetailAddress=document.getElementById('propertyDetailAddress');
-
-addressSearchBtn.addEventListener('click',()=>{
-  if(typeof daum==='undefined' || !daum.Postcode){
-    alert('주소 검색 서비스를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.');
-    return;
-  }
-  new daum.Postcode({
-    oncomplete:function(data){
-      const selectedAddress=data.roadAddress || data.jibunAddress || '';
-      propertyAddress.value=selectedAddress;
-      propertyAddress.dataset.roadAddress=data.roadAddress || '';
-      propertyAddress.dataset.jibunAddress=data.jibunAddress || '';
-      propertyDetailAddress.focus();
-    }
-  }).open();
-});
-
 phone.addEventListener('input',()=>{
   let v=phone.value.replace(/[^0-9]/g,'').slice(0,11);
   if(v.length<4) phone.value=v;
@@ -195,10 +164,10 @@ form.addEventListener('submit', async (e)=>{
     phone: fd.get('phone') || '',
     loanTiming: fd.get('neededWhen') || '',
     loanType: fd.get('loanType') || '',
-    homeCount: fd.get('houseCount') || '',
-    address: [fd.get('propertyAddress') || '', fd.get('propertyDetailAddress') || ''].filter(Boolean).join(' '),
-    existingLoan: fd.get('securedDebt') || '',
-    contractDate: fd.get('contractClosing') || '',
+    homeCount: '',
+    address: fd.get('propertyAddress') || '',
+    existingLoan: '',
+    contractDate: '',
     incomeDebt: fd.get('incomeDebt') || '',
     amount: fd.get('amount') || '',
     privacyAgree: document.getElementById('agree').checked ? '동의' : '미동의'
