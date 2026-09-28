@@ -122,12 +122,54 @@ input,select,textarea{width:100%;border:0;border-bottom:1px solid #aeb7c2;backgr
       <span aria-hidden="true" style="font-size:16px;line-height:1">⚙️</span>
       <span>ADMIN</span>
     </a>
+    <span id="dailyViews" title="오늘 유효 방문자 수" style="margin-left:5px;color:#9aa3ad;font-size:10px;font-weight:600">-</span>
   </div>
 
 </main>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 const SCRIPT_URL='https://script.google.com/macros/s/AKfycbwgNL6-MtRv4GDyo2uQhLGWRDYbyLS2aIX9ZBuGoB3hcX6iyeXW9nL_QM0g6m49m3hhUA/exec';
+
+const SUPABASE_URL='https://vbrnzmakcthhaxktclnt.supabase.co';
+const SUPABASE_KEY='sb_publishable_Ew2ZB1EqFa4eAITuxhoO5w_944IyA2F';
+
+async function updateDailyViews(){
+  const viewEl=document.getElementById('dailyViews');
+  if(!viewEl) return;
+  try{
+    let visitorId=localStorage.getItem('loanfind_visitor_id');
+    if(!visitorId){
+      visitorId=(crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2)+Date.now().toString(36));
+      localStorage.setItem('loanfind_visitor_id',visitorId);
+    }
+
+    const now=new Date();
+    const kstDate=new Intl.DateTimeFormat('en-CA',{
+      timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'
+    }).format(now);
+    const raw=new TextEncoder().encode(visitorId+'|'+kstDate+'|loanfind');
+    const digest=await crypto.subtle.digest('SHA-256',raw);
+    const visitorHash=Array.from(new Uint8Array(digest)).map(b=>b.toString(16).padStart(2,'0')).join('');
+
+    const res=await fetch(SUPABASE_URL+'/rest/v1/rpc/register_loanfind_visit',{
+      method:'POST',
+      headers:{
+        'apikey':SUPABASE_KEY,
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify({p_visitor_hash:visitorHash})
+    });
+    if(!res.ok) throw new Error('view counter failed');
+    const count=await res.json();
+    viewEl.textContent=String(count);
+  }catch(err){
+    console.warn('daily view counter unavailable',err);
+    viewEl.textContent='-';
+  }
+}
+updateDailyViews();
+
+
 const form=document.getElementById('loanForm');
 const status=document.getElementById('status');
 const phone=document.getElementById('phone');
