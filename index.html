@@ -65,11 +65,18 @@ input,select,textarea{width:100%;border:0;border-bottom:1px solid #aeb7c2;backgr
         <label class="opt"><input type="radio" name="loanType" value="전세자금대출">전세자금대출</label>
         <label class="opt"><input type="radio" name="loanType" value="생활안정자금(대환 및 추가 주택담보대출)">생활안정자금(대환 및 추가 주택담보대출)</label>
         <label class="opt"><input type="radio" name="loanType" value="개인사업자 담보대출">개인사업자 담보대출</label>
-        <label class="opt"><input type="radio" name="loanType" value="법인사업자 담보대출">법인사업자 담보대출</label>
-        <label class="opt"><input type="radio" name="loanType" value="정책자금/정부지원금 (사업자금, 창업자금)">정책자금/정부지원금 (사업자금, 창업자금)</label>
-        <label class="opt"><input type="radio" name="loanType" value="신용대출 (고금리 및 추가한도)">신용대출 (고금리 및 추가한도)</label>
+        <label class="opt"><input type="radio" name="loanType" value="신용대출 (차량대출 / 사업자신용)">신용대출 (차량대출 / 사업자신용)</label>
         <label class="opt"><input type="radio" name="loanType" value="그 외">그 외</label>
       </div>
+    </section>
+
+    <section class="card q">
+      <div class="q-title">대출 받을 집(부동산) 주소</div>
+      <div class="address-row">
+        <input id="propertyAddress" name="propertyAddress" placeholder="주소를 검색해 주세요" readonly>
+        <button class="address-btn" type="button" id="addressSearchBtn">주소 검색</button>
+      </div>
+      <div class="address-note">주소 검색 버튼을 눌러 자동으로 입력해 주세요.</div>
     </section>
 
     <section class="card q">
@@ -77,16 +84,11 @@ input,select,textarea{width:100%;border:0;border-bottom:1px solid #aeb7c2;backgr
       <input id="neededWhen" name="neededWhen" required placeholder="내 답변">
     </section>
 
-<section class="card q">
-      <div class="q-title">대출 받을 집(부동산) 주소</div>
-      <input id="propertyAddress" name="propertyAddress" placeholder="주소를 입력해 주세요">
-    </section>
-
 
 
     <section class="card q">
-      <div class="q-title">소득<br><span style="font-weight:500;font-size:13px;color:#4b5563">(무직자일 경우 0으로 기재해 주세요)</span></div>
-      <input id="incomeDebt" name="incomeDebt" placeholder="연소득">
+      <div class="q-title">연소득 (만원)<br><span style="font-weight:500;font-size:13px;color:#4b5563">(무직자일 경우 0으로 기재해 주세요)</span></div>
+      <input id="incomeDebt" name="incomeDebt" inputmode="numeric" placeholder="예: 5000">
     </section>
 
     <section class="card q">
@@ -113,11 +115,12 @@ input,select,textarea{width:100%;border:0;border-bottom:1px solid #aeb7c2;backgr
     <div id="status" class="status" role="status" aria-live="polite"></div>
   </form>
 
-  <footer class="footer"><span class="brand">론파인드 LOANFIND</span><br>론파인드 LOANFIND는 대출상담 신청 접수를 위한 브랜드입니다.<br>상담: 등록 대출상담사 이찬우 · 등록번호 10-00-027974<br>소속 모집법인: ㈜하이모기지플러스 · 등록법인번호 20-00001618<br>※ 실제 대출 가능 여부·한도·금리·조건은<br>금융회사의 심사 결과에 따라 달라질 수 있습니다.<br>개인정보 수집업체: 론파인드, 이찬우<br><div style="margin-top:8px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
+  <footer class="footer"><span class="brand">론파인드 LOANFIND</span><br>론파인드 LOANFIND는 대출상담 신청 접수를 위한 브랜드입니다.<br>상담: 등록 대출상담사 이찬우 · 등록번호 10-00-027974<br>소속 모집법인: ㈜하이모기지플러스 · 등록법인번호 20-00001618<br>개인정보 수집업체: 론파인드, 이찬우<br><div style="margin-top:8px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
 <a href="privacy.html" style="color:#173a67;font-weight:700;text-decoration:underline">개인정보처리방침</a>
 <a href="https://docs.google.com/spreadsheets/d/1t-eerlrTs2GrcBjDu4UkHpzWTLIVyxL3VN4Srts135Y/edit" target="_blank" rel="noopener" style="color:#173a67;font-weight:700;text-decoration:underline">관리자페이지</a>
 </div></footer>
 </main>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 const SCRIPT_URL='https://script.google.com/macros/s/AKfycbwgNL6-MtRv4GDyo2uQhLGWRDYbyLS2aIX9ZBuGoB3hcX6iyeXW9nL_QM0g6m49m3hhUA/exec';
 const form=document.getElementById('loanForm');
@@ -125,6 +128,17 @@ const status=document.getElementById('status');
 const phone=document.getElementById('phone');
 const clearBtn=document.getElementById('clearBtn');
 const submitBtn=form.querySelector('button[type="submit"]');
+const addressSearchBtn=document.getElementById('addressSearchBtn');
+const propertyAddress=document.getElementById('propertyAddress');
+
+addressSearchBtn.addEventListener('click',()=>{
+  new daum.Postcode({
+    oncomplete:function(data){
+      const addr = data.userSelectedType === 'R' ? data.roadAddress : data.jibunAddress;
+      propertyAddress.value = addr;
+    }
+  }).open();
+});
 phone.addEventListener('input',()=>{
   let v=phone.value.replace(/[^0-9]/g,'').slice(0,11);
   if(v.length<4) phone.value=v;
